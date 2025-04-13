@@ -5,19 +5,79 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".MainActivity">
 
 
     <LinearLayout
         android:id="@+id/dynamicLayout"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/label"
+        app:layout_constraintVertical_bias="1.0">
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="79dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/grey"
+        android:padding="2dp"
+        android:text="Create"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/label"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:hint="Label"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/createButton"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/viewType"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+    <EditText
+        android:id="@+id/viewType"
+        android:layout_width="174dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:hint="View Type"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Create The Views \n Like Text, checkbox, button"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
