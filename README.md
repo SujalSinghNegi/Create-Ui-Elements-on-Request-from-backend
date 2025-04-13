@@ -1,5 +1,6 @@
 This APP creates the UI element on Demand from the user, and then add to the layout.
-
+A Text Watcher is added when the both the field of viewType with correct View and Label is filled then the color of create button changes to green otherwise grey.
+And creates a view accordingly.
 
 ## What is a TextWatcher?
 
