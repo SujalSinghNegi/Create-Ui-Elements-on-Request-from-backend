@@ -60,17 +60,30 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+
+        //----------------------- U P D A T E -------------------------------------------
+
+
         val createButton:Button = findViewById<Button>(R.id.createButton)
         val label:EditText = findViewById<EditText>(R.id.label)
         val viewType:EditText = findViewById<EditText>(R.id.viewType)
-
+        val possibleTypes = listOf("text", "checkbox", "button")
+        var canCreate:Boolean = false
+        var labelFilled : Boolean= false
+        var typeFilled : Boolean= false
+        var eleType : String?=""
+        var eleLabel:String?
         val watcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                val labelFilled = label.text.toString().isNotEmpty()
-                val typeFilled = viewType.text.toString().isNotEmpty()
+                 labelFilled = label.text.toString().isNotEmpty()
+                 typeFilled = viewType.text.toString().isNotEmpty()
+                 eleType = viewType.text.toString().lowercase().trim()
+                if (labelFilled && typeFilled && eleType in possibleTypes) canCreate= true
+                else canCreate= false
 
-                if (labelFilled && typeFilled) {
-                    createButton.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.green))
+                if(canCreate){
+                    createButton.setBackgroundColor(ContextCompat.getColor(this@MainActivity,R.color.green))
                 }else{
                     createButton.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.grey))
                 }
@@ -81,13 +94,40 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // beforeTextChanged, onTextChanged, afterTextChanged
-
 
         label.addTextChangedListener(watcher)
         viewType.addTextChangedListener(watcher)
 
+        createButton.setOnClickListener {
+           // eleType = viewType.text.toString().lowercase().trim()
+            eleLabel= label.text.toString()
+            if (canCreate) {
+                when (eleType) {
+                    "text" -> {
+                        val editText = EditText(this).apply {
+                            hint = eleLabel
+                        }
+                        container.addView(editText)
+                    }
 
+                    "checkbox" -> {
+                        val checkBox = CheckBox(this).apply {
+                            text = eleLabel
+                        }
+                        container.addView(checkBox)
+                    }
+
+                    "button" -> {
+                        val button = Button(this).apply {
+                            text = eleLabel
+                        }
+                        container.addView(button)
+                    }
+                }
+                label.text.clear()
+                viewType.text.clear()
+            }
+        }
 
     }
 
